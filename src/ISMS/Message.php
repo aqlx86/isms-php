@@ -25,7 +25,7 @@ class Message
     public function recipient()
     {
         if ($this->recipient->type() == Recipient::RCP_NUMBER)
-            return implode(';', $this->recipient);
+            return implode(';', $this->recipient->recipients());
 
         return $this->recipient;
     }
@@ -45,13 +45,23 @@ class Message
         return $this->sender_id;
     }
 
+    public function to_array()
+    {
+        return [
+            $this->recipient->type() => $this->recipient(),
+            'msg' => $this->message(),
+            'type' => $this->type(),
+            'senderid' => $this->sender_id
+        ];
+    }
+
     public function __toString()
     {
         return http_build_query([
-            $this->recipient->type => $this->recipient(),
+            $this->recipient->type() => $this->recipient(),
             'msg' => $this->message(),
             'type' => $this->type(),
-            'senderid' => $this->senderid
+            'senderid' => $this->sender_id
         ]);
     }
 }

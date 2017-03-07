@@ -11,8 +11,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "ISMS\\": "src/",
+            "ISMS\\": "src/ISMS"
         }
     },
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    }
 }

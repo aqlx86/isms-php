@@ -51,6 +51,7 @@ class Message
             $this->recipient->type() => $this->recipient(),
             'msg' => $this->message(),
             'type' => $this->type(),
+            'agreedterm' => 'YES',
             'senderid' => $this->sender_id
         ];
     }
